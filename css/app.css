@@ -19,7 +19,7 @@ html {
     text-align: center;
     margin: 30px 0;
 }
-#sudoku > #filters > button {
+#sudoku button {
     margin: 0;
     padding: 10px 17px;
     position: relative;
