@@ -20,11 +20,20 @@ function generateGrid(puzzle) {
 	}
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
 	getPuzzles().done(function(data) {
 		console.log(data);
 		var puzzle = data[Math.floor(Math.random()*data.length)];
 		console.log(puzzle);
 		generateGrid(puzzle);
+	});
+
+	$('#filters button').each(function() {
+		$(this).click(function(e) {
+			console.log($(this).html())
+			$('.cell').removeClass('highlight');
+			$(".cell:contains('" + $(this).html() + "')").addClass('highlight');
+			e.preventDefault();
+		});
 	});
 });

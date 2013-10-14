@@ -44,6 +44,9 @@ html {
 #sudoku .cell[contentEditable=true]:hover, #sudoku .cell[contentEditable=true]:focus {
     background-color: rgba(255, 255, 255, 0.6);
 }
+.highlight {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
 
 #sudoku td:nth-child(3), #sudoku td:nth-child(6){
     border-right: 3px solid #76B3C2;
