@@ -1,3 +1,10 @@
+function newPuzzle() {
+    getPuzzles().done(function(puzzle) {
+        console.log(puzzle);
+        generateGrid(puzzle);
+    });
+}
+
 function getPuzzles() {
     return $.ajax({
         url: 'ajax.php',
@@ -36,9 +43,7 @@ function highlight(number) {
 }
 
 $(document).ready(function(){
-    getPuzzles().done(function(puzzle) {
-        generateGrid(puzzle);
-    });
+    newPuzzle();
 
     var filter = 0;
 	$('#filters button').each(function() {
@@ -62,4 +67,15 @@ $(document).ready(function(){
 		console.log(filter)
 		highlight(filter);
 	}, false);
+
+    $('#clear').click(function(e) {
+        $('#sudoku .cell[contentEditable=true]').html('');
+        e.preventDefault();
+    });
+
+    $('#new').click(function(e) {
+        $('#grid').empty();
+        newPuzzle();
+        e.preventDefault();
+    });
 });
