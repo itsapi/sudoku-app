@@ -80,12 +80,14 @@ $(document).ready(function(){
 
     $('#clear').click(function(e) {
         $('#sudoku .cell[contentEditable=true]').html('');
+		highlight(filter);
         e.preventDefault();
     });
 
     $('#new').click(function(e) {
         $('#grid').empty();
         newPuzzle();
+		highlight(filter);
         e.preventDefault();
     });
 });
