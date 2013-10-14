@@ -1,0 +1,60 @@
+/* app css stylesheet */
+
+html {
+    background-color: #033E6B;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+#sudoku {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+#sudoku > #filters {
+    text-align: center;
+    margin: 30px 0;
+}
+#sudoku > #filters > button {
+    margin: 0;
+    padding: 10px 17px;
+    /*background-color: rgba(255, 255, 255, 0.9);*/
+}
+
+#sudoku > #controls {
+    text-align: center;
+    margin: 40px;
+}
+
+#sudoku > table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#sudoku .cell {
+    width: 2em;
+    padding: 3px;
+    margin: 8px 6px;
+    border: none;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: rgba(50, 50, 50, 1);
+}
+#sudoku .cell[contentEditable=true] {
+    color: black;
+}
+#sudoku .cell[contentEditable=true]:hover, #sudoku .cell[contentEditable=true]:focus {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#sudoku td:nth-child(3), #sudoku td:nth-child(6){
+    border-right: 3px solid #76B3C2;
+}
+
+#sudoku tr:nth-child(3), #sudoku tr:nth-child(6){
+    border-bottom: 3px solid #76B3C2;
+}
