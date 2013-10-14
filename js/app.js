@@ -1,6 +1,5 @@
 function newPuzzle() {
     getPuzzles().done(function(puzzle) {
-        console.log(puzzle);
         generateGrid(puzzle);
     });
 }
@@ -36,14 +35,26 @@ function generateGrid(puzzle) {
     $('div:contains(0)').html('').attr('contentEditable', 'true');
 }
 
+function generateButtons() {
+	for (var i=1; i<=9; i++) {
+		$('#filters').append(
+			$('<button />').html(i)
+		)
+	}
+}
+
 function highlight(number) {
 	// hightlight() is bound to a filter button click and a .cell input event.
-	$('.cell').removeClass('highlight');
-	$(".cell:contains('" + number + "')").addClass('highlight');
+	$('.cell').removeClass('highlight').removeClass('Mhighlight');
+	$(".cell:contains('" + number + "')").addClass('Mhighlight').not(function() {
+		return ($(this).html().length > 1);
+	}).removeClass('Mhighlight').addClass('highlight');
 }
 
 $(document).ready(function(){
     newPuzzle();
+
+    generateButtons();
 
     var filter = 0;
 	$('#filters button').each(function() {
@@ -64,7 +75,6 @@ $(document).ready(function(){
 	});
 
 	document.getElementById('sudoku').addEventListener('input', function() {
-		console.log(filter)
 		highlight(filter);
 	}, false);
 

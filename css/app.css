@@ -48,18 +48,24 @@ html {
     margin: 8px 6px;
     border: none;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     color: rgba(50, 50, 50, 1);
 }
 #sudoku .cell[contentEditable=true] {
     color: black;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 #sudoku .cell[contentEditable=true]:hover, #sudoku .cell[contentEditable=true]:focus {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 .highlight {
-    background-color: rgba(255, 255, 255, 0.8) !important;
+    background-color: rgba(255, 200, 50, 0.6) !important;
+}
+#sudoku .highlight[contentEditable=true] {
+    background-color: rgba(255, 127, 0, 0.45) !important;
+}
+.Mhighlight {
+    background-color: rgba(255, 127, 0, 0.3) !important;
 }
 
 #sudoku td:nth-child(3), #sudoku td:nth-child(6){
