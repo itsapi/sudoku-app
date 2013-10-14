@@ -35,11 +35,12 @@ html {
     margin: 8px 6px;
     border: none;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     color: rgba(50, 50, 50, 1);
 }
 #sudoku .cell[contentEditable=true] {
     color: black;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 #sudoku .cell[contentEditable=true]:hover, #sudoku .cell[contentEditable=true]:focus {
     background-color: rgba(255, 255, 255, 0.6);
