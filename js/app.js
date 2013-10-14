@@ -5,8 +5,18 @@ function getPuzzles() {
 }
 
 function generateGrid(puzzle) {
-	for (var i=0; i<puzzle.length; i++) {
-		$('#sudoku').add('td').add('div').addClass('cell');
+	for (var y=0; y<9; y++) {
+		$('#grid').append(
+			$('<tr />').html(function() {
+				for (var x=0; x<9; x++) {
+					$(this).append(
+						$('<td />').html(
+							$('<div />').html('0').addClass('cell')
+						)
+					);
+				}
+			})
+		);
 	}
 }
 
