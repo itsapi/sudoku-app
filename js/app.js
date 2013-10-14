@@ -1,32 +1,39 @@
 function getPuzzles() {
-	return $.getJSON('ajax.php', {
-			func: 'getPuzzles'
-	});
+    return $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        data: {
+            func: 'getPuzzles'
+        }
+    });
 }
 
 function generateGrid(puzzle) {
-	for (var y=0; y<9; y++) {
-		$('#grid').append(
-			$('<tr />').html(function() {
-				for (var x=0; x<9; x++) {
-					$(this).append(
-						$('<td />').html(
-							$('<div />').html('0').addClass('cell')
-						)
-					);
-				}
-			})
-		);
-	}
+    var i=0;
+    for (var y=0; y<9; y++) {
+        $('#grid').append(
+            $('<tr />').html(function() {
+                for (var x=0; x<9; x++) {
+                    $(this).append(
+                        $('<td />').html(
+                            $('<div />').html(
+                                puzzle[i]
+                            ).addClass('cell')
+                        )
+                    );
+                    i++;
+                }
+            })
+        );
+    }
+    $('div:contains(0)').html('').attr('contentEditable', 'true');
 }
 
-$(document).ready(function() {
-	getPuzzles().done(function(data) {
-		console.log(data);
-		var puzzle = data[Math.floor(Math.random()*data.length)];
-		console.log(puzzle);
-		generateGrid(puzzle);
-	});
+$(document).ready(function(){
+    getPuzzles().done(function(puzzle) {
+        console.log(puzzle);
+        generateGrid(puzzle);
+    });
 
 	$('#filters button').each(function() {
 		$(this).click(function(e) {

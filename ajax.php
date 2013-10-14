@@ -1,14 +1,14 @@
 <?
-	switch ($_GET['func']) {                                                                                              
-		case 'getPuzzles':
-			$file = 'subig20';
-			$puzzle = [];
-			
-			$handle = fopen($file, "r");
-			while(!feof($handle)) {
-					$puzzle[] = fgets($handle);
-			}
-			fclose($handle);
-			echo json_encode($puzzle);
-			break;
-	}
+    switch ($_REQUEST['func']) {                                                                                              
+        case 'getPuzzles':
+            $file = 'subig20';
+            $puzzles = [];
+            
+            $handle = fopen($file, "r");
+            while(!feof($handle)) {
+                    $puzzles[] = fgets($handle);
+            }
+            fclose($handle);
+            echo $puzzles[array_rand($puzzles)];
+            break;
+    }
