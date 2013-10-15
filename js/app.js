@@ -32,7 +32,7 @@ function generateGrid(puzzle) {
             })
         );
     }
-    $('div:contains(0)').html('').attr('contentEditable', 'true');
+    $("div:contains('.')").html('').attr('contentEditable', 'true');
 }
 
 function generateButtons() {
