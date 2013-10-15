@@ -40,7 +40,6 @@ function generateGrid() {
         }
     });
     $("input[value!='.']").attr('disabled', 'true');
-    $("input[value='.']").val('');
 }
 
 function generateButtons() {
@@ -115,10 +114,4 @@ $(document).ready(function() {
         highlight(filter);
         e.preventDefault();
     });
-});
-
-$('.cell').keypress(function(){
-    var value = jQuery(this).val();
-    value = value.replace(/[^0-9]+/g, '');
-    jQuery(this).val(value);
 });
