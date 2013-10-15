@@ -1,6 +1,7 @@
 function newPuzzle() {
     getPuzzles().done(function(puzzle) {
-        generateGrid(puzzle);
+        $('#sudoku').attr('data-puzzle', puzzle);
+        generateGrid();
     });
 }
 
@@ -14,7 +15,9 @@ function getPuzzles() {
     });
 }
 
-function generateGrid(puzzle) {
+function generateGrid() {
+    $('#grid').empty();
+    var puzzle = $('#sudoku').attr('data-puzzle');
     var i=0;
     for (var y=0; y<9; y++) {
         $('#grid').append(
@@ -23,9 +26,9 @@ function generateGrid(puzzle) {
                     $(this).append(
                         $('<td />').html(
                             $('<div />')
-                            	.html(puzzle[i])
-                            	.addClass('cell')
-                            	.attr('pattern', '[0-9]*')
+                                .html(puzzle[i])
+                                .addClass('cell')
+                                .attr('pattern', '[0-9]*')
                         )
                     );
                     i++;
@@ -37,60 +40,75 @@ function generateGrid(puzzle) {
 }
 
 function generateButtons() {
-	for (var i=1; i<=9; i++) {
-		$('#filters').append(
-			$('<button />').html(i)
-		)
-	}
+    for (var i=1; i<=9; i++) {
+        $('#filters').append(
+            $('<button />').html(i)
+        )
+    }
 }
 
 function highlight(number) {
-	// hightlight() is bound to a filter button click and a .cell input event.
-	$('.cell').removeClass('highlight').removeClass('Mhighlight');
-	$(".cell:contains('" + number + "')").addClass('Mhighlight').not(function() {
-		return ($(this).html().length > 1);
-	}).removeClass('Mhighlight').addClass('highlight');
+    // hightlight() is bound to a filter button click and a .cell input event.
+    $('.cell').removeClass('highlight').removeClass('Mhighlight');
+    $(".cell:contains('" + number + "')").addClass('Mhighlight').not(function() {
+        return ($(this).html().length > 1);
+    }).removeClass('Mhighlight').addClass('highlight');
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     newPuzzle();
 
     generateButtons();
 
     var filter = 0;
-	$('#filters button').each(function() {
-		$(this).click(function(e) {
-			// When a button's clicked toggle it and update the filter var.
-			$('#filters button').not(this).removeClass('toggle');
-			if ($(this).hasClass('toggle')) {
-				$(this).removeClass('toggle');
-				filter = 0;
-				highlight(filter);
-			} else {
-				$(this).addClass('toggle');
-				filter = $(this).html();
-				highlight(filter);
-			}
-			e.preventDefault();
-		});
-	});
+    $('#filters button').each(function() {
+        $(this).click(function(e) {
+            // When a button's clicked toggle it and update the filter var.
+            $('#filters button').not(this).removeClass('toggle');
+            if ($(this).hasClass('toggle')) {
+                $(this).removeClass('toggle');
+                filter = 0;
+                highlight(filter);
+            } else {
+                $(this).addClass('toggle');
+                filter = $(this).html();
+                highlight(filter);
+            }
+            e.preventDefault();
+        });
+    });
 
-	document.getElementById('sudoku').addEventListener('input', function() {
-		highlight(filter);
-	}, false);
+    document.getElementById('sudoku').addEventListener('input', function() {
+        highlight(filter);
+    }, false);
 
     $('#clear').click(function(e) {
         $('#sudoku .cell[contentEditable=true]').html('');
-		$('#filters button').removeClass('toggle');
-		highlight(filter);
+        $('#filters button').removeClass('toggle');
+        highlight(filter);
         e.preventDefault();
     });
 
     $('#new').click(function(e) {
-        $('#grid').empty();
         newPuzzle();
-		$('#filters button').removeClass('toggle');
-		highlight(filter);
+        $('#filters button').removeClass('toggle');
+        highlight(filter);
+        e.preventDefault();
+    });
+
+    $('#solve').click(function(e) {
+        $.getScript("js/solve.js", function() {
+            var puzzle = $('#sudoku').attr('data-puzzle');
+            var solver = sudoku_solver()
+            var solstr = '';
+            var solarr = solver(puzzle, 2)
+            for (var i = 0; i < solarr.length; ++i) {
+                solstr += solarr[i].join('')
+            }
+            $('#sudoku').attr('data-puzzle', solstr);
+            generateGrid();
+        });
+        highlight(filter);
         e.preventDefault();
     });
 });
