@@ -81,6 +81,7 @@ $(document).ready(function(){
 
     $('#clear').click(function(e) {
         $('#sudoku .cell[contentEditable=true]').html('');
+		$('#filters button').removeClass('toggle');
 		highlight(filter);
         e.preventDefault();
     });
@@ -88,6 +89,7 @@ $(document).ready(function(){
     $('#new').click(function(e) {
         $('#grid').empty();
         newPuzzle();
+		$('#filters button').removeClass('toggle');
 		highlight(filter);
         e.preventDefault();
     });
