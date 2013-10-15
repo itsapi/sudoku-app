@@ -68,6 +68,13 @@ html {
     background-color: rgba(255, 127, 0, 0.3) !important;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 #sudoku td:nth-child(3), #sudoku td:nth-child(6){
     border-right: 3px solid #76B3C2;
 }

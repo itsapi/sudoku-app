@@ -22,9 +22,10 @@ function generateGrid(puzzle) {
                 for (var x=0; x<9; x++) {
                     $(this).append(
                         $('<td />').html(
-                            $('<div />').html(
-                                puzzle[i]
-                            ).addClass('cell')
+                            $('<div />')
+                            	.html(puzzle[i])
+                            	.addClass('cell')
+                            	.attr('pattern', '[0-9]*')
                         )
                     );
                     i++;
