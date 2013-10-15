@@ -27,8 +27,8 @@ function generateGrid() {
                         $(this).append(
                             $('<td />').html(
                                 $('<input />')
-                                    .val(puzzle[i])
                                     .addClass('cell')
+                                    .attr('value', puzzle[i])
                                     .attr('type', 'number')
                                     .attr('pattern', '[0-9]*')
                             )
@@ -39,7 +39,8 @@ function generateGrid() {
             );
         }
     });
-    $("input:contains('.')").empty().attr('contentEditable', 'true');
+    $("input[value!='.']").attr('disabled', 'true');
+    $("input[value='.']").val('');
 }
 
 function generateButtons() {
@@ -114,4 +115,10 @@ $(document).ready(function() {
         highlight(filter);
         e.preventDefault();
     });
+});
+
+$('.cell').keypress(function(){
+    var value = jQuery(this).val();
+    value = value.replace(/[^0-9]+/g, '');
+    jQuery(this).val(value);
 });
