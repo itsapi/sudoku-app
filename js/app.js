@@ -16,27 +16,30 @@ function getPuzzles() {
 }
 
 function generateGrid() {
-    $('#grid').empty();
+    $('#sudoku table').empty();
     var puzzle = $('#sudoku').attr('data-puzzle');
     var i=0;
-    for (var y=0; y<9; y++) {
-        $('#grid').append(
-            $('<tr />').html(function() {
-                for (var x=0; x<9; x++) {
-                    $(this).append(
-                        $('<td />').html(
-                            $('<div />')
-                                .html(puzzle[i])
-                                .addClass('cell')
-                                .attr('pattern', '[0-9]*')
-                        )
-                    );
-                    i++;
-                }
-            })
-        );
-    }
-    $("div:contains('.')").html('').attr('contentEditable', 'true');
+    $('#sudoku table').html(function() {
+        for (var y=0; y<9; y++) {
+            $(this).append(
+                $('<tr />').html(function() {
+                    for (var x=0; x<9; x++) {
+                        $(this).append(
+                            $('<td />').html(
+                                $('<input />')
+                                    .val(puzzle[i])
+                                    .addClass('cell')
+                                    .attr('type', 'number')
+                                    .attr('pattern', '[0-9]*')
+                            )
+                        );
+                        i++;
+                    }
+                })
+            );
+        }
+    });
+    $("input:contains('.')").empty().attr('contentEditable', 'true');
 }
 
 function generateButtons() {
@@ -83,7 +86,7 @@ $(document).ready(function() {
     }, false);
 
     $('#clear').click(function(e) {
-        $('#sudoku .cell[contentEditable=true]').html('');
+        $('#sudoku .cell[contentEditable=true]').empty();
         $('#filters button').removeClass('toggle');
         highlight(filter);
         e.preventDefault();
