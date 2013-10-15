@@ -39,7 +39,7 @@ function generateGrid() {
             );
         }
     });
-    $("input[value!='.']").attr('disabled', 'true');
+    $("#sudoku table input[value!='.']").attr('disabled', 'true');
 }
 
 function generateButtons() {
