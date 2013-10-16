@@ -43,11 +43,30 @@ function generateGrid() {
 }
 
 function generateButtons() {
-    for (var i=1; i<=9; i++) {
-        $('#filters').append(
-            $('<button />').html(i)
-        )
-    }
+    $('#filters').html(function() {
+        for (var i=1; i<=9; i++) {
+            $(this).append(
+                $('<button />').html(i)
+            );
+        }
+    });
+    $('#control-buttons').html(function() {
+        $(this).append(
+            $('<button />')
+                .html('Clear')
+                .attr('id', 'clear')
+        );
+        $(this).append(
+            $('<button />')
+                .html('New Puzzle')
+                .attr('id', 'new')
+        );
+        $(this).append(
+            $('<button />')
+                .html('Solve')
+                .attr('id', 'solve')
+        );
+    });
 }
 
 function highlight(number) {
