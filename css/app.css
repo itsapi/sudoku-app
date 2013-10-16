@@ -53,23 +53,23 @@ html {
     color: black; /* Unset */
     outline: none;
 }
-#sudoku .cell[disbled=true] {
+#sudoku .cell[disabled=disabled] {
     background-color: rgba(255, 255, 255, 0.3); /* Set */
-    color: rgba(50, 50, 50, 1); /* Set */
+    color: rgba(50, 50, 50, 1) !important; /* Set */
 }
-/*#sudoku .cell:not(.cell[disbled=true]):hover, 
-#sudoku .cell:not(.cell[disbled=true]):focus {
+#sudoku .cell:hover, #sudoku .cell:focus {
     background-color: rgba(255, 255, 255, 0.3); /* Unset:hover:focus */
-/*}*/
-/*.highlight[disbled=true] {
+}
+
+#sudoku .highlight {
+    background-color: rgba(255, 127, 0, 0.45); /* Unset .highlight */
+}
+#sudoku .highlight[disabled=disabled] {
     background-color: rgba(255, 200, 50, 0.6) !important; /* Set .highlight */
-/*}*/
-/*#sudoku .highlight {
-    background-color: rgba(255, 127, 0, 0.45) !important; /* Unset .highlight */
-/*}*//*
-.Mhighlight {
+}
+#sudoku .Mhighlight {
     background-color: rgba(255, 127, 0, 0.3) !important; /* Unset .Mhighlight */
-/*}*/
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
