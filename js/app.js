@@ -38,17 +38,35 @@ function generateGrid() {
                 })
             )
         }
-    })
-    $("input[value!='.']").attr('disabled', 'true')
-    $("input[value='.']").val('')
+    });
+    $("#sudoku table input[value!='.']").attr('disabled', 'true');
 }
 
 function generateButtons() {
-    for (var i=1; i<=9; i++) {
-        $('#filters').append(
-            $('<button />').html(i)
-        )
-    }
+    $('#filters').html(function() {
+        for (var i=1; i<=9; i++) {
+            $(this).append(
+                $('<button />').html(i)
+            );
+        }
+    });
+    $('#control-buttons').html(function() {
+        $(this).append(
+            $('<button />')
+                .html('Clear')
+                .attr('id', 'clear')
+        );
+        $(this).append(
+            $('<button />')
+                .html('New Puzzle')
+                .attr('id', 'new')
+        );
+        $(this).append(
+            $('<button />')
+                .html('Solve')
+                .attr('id', 'solve')
+        );
+    });
 }
 
 function highlight(number) {
@@ -72,7 +90,6 @@ $(document).ready(function() {
     var filter = 0
     $('#filters button').each(function() {
         $(this).click(function(e) {
-            e.preventDefault()
             // When a button's clicked toggle it and update the filter var.
             $('#filters button').not(this).removeClass('toggle')
             if ($(this).hasClass('toggle')) {
@@ -84,6 +101,7 @@ $(document).ready(function() {
                 filter = $(this).html()
                 highlight(filter)
             }
+            e.preventDefault()
         })
     })
 
@@ -120,10 +138,4 @@ $(document).ready(function() {
         highlight(filter)
         e.preventDefault()
     })
-})
-
-$('.cell').keypress(function(){
-    var value = jQuery(this).val()
-    value = value.replace(/[^0-9]+/g, '')
-    jQuery(this).val(value)
 })
