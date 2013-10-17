@@ -101,12 +101,10 @@ $(document).ready(function() {
             $('#filters button').not(this).removeClass('toggle')
             if ($(this).hasClass('toggle')) {
                 $(this).removeClass('toggle')
-                filter = 0
-                highlight(filter)
+                highlight(0)
             } else {
                 $(this).addClass('toggle')
-                filter = $(this).html()
-                highlight(filter)
+                highlight($(this).html())
             }
             e.preventDefault()
         })
@@ -119,14 +117,14 @@ $(document).ready(function() {
     $('#clear').click(function(e) {
         $('#sudoku .cell:not([disabled])').val('')
         $('#filters button').removeClass('toggle')
-        highlight(filter)
+        highlight(0)
         e.preventDefault()
     })
 
     $('#new').click(function(e) {
         newPuzzle()
         $('#filters button').removeClass('toggle')
-        highlight(filter)
+        highlight(0)
         e.preventDefault()
     })
 
@@ -142,7 +140,7 @@ $(document).ready(function() {
             $('#sudoku').attr('data-puzzle', solstr)
             generateGrid()
         });
-        highlight(filter)
+        highlight(0)
         e.preventDefault()
     })
 })
