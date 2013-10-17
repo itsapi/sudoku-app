@@ -40,6 +40,7 @@ function generateGrid() {
         }
     })
     $("#sudoku table input[value!='.']").attr('disabled', 'true')
+    $("#sudoku table input[value='.']").val('')
 }
 
 function generateButtons() {
