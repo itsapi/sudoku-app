@@ -1,7 +1,7 @@
 <?
     switch ($_REQUEST['func']) {                                                                                              
         case 'getPuzzles':
-            $file = 'subig20';
+            $file = 'puzzles/subig20';
             $puzzles = [];
             
             $handle = fopen($file, "r");
