@@ -78,6 +78,9 @@ function highlight(number) {
         if ($(this).attr('value') == number) {
             $(this).addClass('highlight')
         }
+        if (($(this).val() != '') && ($(this).val() == number)) {
+            $(this).addClass('highlight')
+        }
     })
  
 }
@@ -110,7 +113,7 @@ $(document).ready(function() {
     }, false)
 
     $('#clear').click(function(e) {
-        $('#sudoku .cell[contentEditable=true]').empty()
+        $('#sudoku .cell:not([disabled])').val('')
         $('#filters button').removeClass('toggle')
         highlight(filter)
         e.preventDefault()
