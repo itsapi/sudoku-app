@@ -55,7 +55,7 @@ html {
 }
 #sudoku .cell[disabled=disabled] {
     background-color: rgba(255, 255, 255, 0.3); /* Set */
-    /*color: rgba(50, 50, 50, 1) !important; /* Set */
+    color: rgba(50, 50, 50, 1) !important; /* Set */
 }
 #sudoku .cell:hover, #sudoku .cell:focus {
     background-color: rgba(255, 255, 255, 0.3); /* Unset:hover:focus */

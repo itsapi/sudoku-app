@@ -75,11 +75,15 @@ function highlight(number) {
 
     $('.cell').each(function() {
         console.log($(this).val())
-        if ($(this).attr('value') == number) {
+        if (($(this).attr('value') == number) ||
+            (($(this).val() != 0) &&
+            ($(this).val() == number))) {
             $(this).addClass('highlight')
         }
-        if (($(this).val() != '') && ($(this).val() == number)) {
-            $(this).addClass('highlight')
+        if (($(this).val() != 0) &&
+            ($(this).val().indexOf(number) != -1) &&
+            ($(this).val() > 1)) {
+            $(this).addClass('Mhighlight')
         }
     })
  
