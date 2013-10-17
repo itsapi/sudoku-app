@@ -141,7 +141,7 @@ $(document).ready(function() {
             }
             $('#sudoku').attr('data-puzzle', solstr)
             generateGrid()
-        });
+        })
         highlight(filter)
         e.preventDefault()
     })
