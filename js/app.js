@@ -82,7 +82,7 @@ function highlight(number) {
         }
         if (($(this).val() != 0) &&
             ($(this).val().indexOf(number) != -1) &&
-            ($(this).val() > 1)) {
+            ($(this).val().length > 1)) {
             $(this).addClass('Mhighlight')
         }
     })
