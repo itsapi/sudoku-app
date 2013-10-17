@@ -100,10 +100,12 @@ $(document).ready(function() {
             $('#filters button').not(this).removeClass('toggle')
             if ($(this).hasClass('toggle')) {
                 $(this).removeClass('toggle')
-                highlight(0)
+                filter = 0
+                highlight(filter)
             } else {
                 $(this).addClass('toggle')
-                highlight($(this).html())
+                filter = $(this).html()
+                highlight(filter)
             }
             e.preventDefault()
         })
