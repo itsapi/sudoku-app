@@ -62,7 +62,7 @@ html {
 }
 
 #sudoku .highlight {
-    background-color: rgba(255, 127, 0, 0.45); /* Unset .highlight */
+    background-color: rgba(255, 127, 0, 0.45) !important; /* Unset .highlight */
 }
 #sudoku .highlight[disabled=disabled] {
     background-color: rgba(255, 200, 50, 0.6) !important; /* Set .highlight */
