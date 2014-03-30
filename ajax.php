@@ -1,9 +1,9 @@
 <?
-    switch ($_REQUEST['func']) {                                                                                              
+    switch ($_REQUEST['func']) {
         case 'getPuzzles':
             $file = 'puzzles/subig20';
             $puzzles = [];
-            
+
             $handle = fopen($file, "r");
             while(!feof($handle)) {
                     $puzzles[] = fgets($handle);

@@ -1,6 +1,3 @@
 {
-	"replace-keys": false,
-	"grunt": false,
-	"output": "/var/www/projects/sudoku_app",
-	"ignore": []
+	"output": "/var/www/projects/sudoku_app"
 }
